@@ -23,4 +23,10 @@ public class AuthController {
     public String login(@RequestBody User user) {
         return userService.login(user.getUsername(), user.getPassword());
     }
+
+    @PostMapping("/logout")
+    public String logout(@RequestBody User user) {
+        return null;
+        //return userService.login(user.getUsername(), user.getPassword());
+    }
 }
