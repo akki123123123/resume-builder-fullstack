@@ -3,14 +3,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: ""
   });
-
-  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -20,56 +19,44 @@ function Login() {
     e.preventDefault();
 
     try {
+
       const res = await axios.post(
         "http://localhost:8080/api/auth/login",
         user
       );
 
+      alert(res.data);
+
       if (res.data === "Login successful!") {
-        // ✅ Store login state
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", user.username);
-
-        setMessage("Login Successful!");
-
-        // ✅ Navigate to Resume Builder home page
-        navigate("/");
-      } else {
-        setMessage("Invalid username or password");
+        navigate("/personal");   // ✅ go to PersonalInfo page
       }
 
-    } catch (error) {
-      setMessage("Server error. Please try again.");
+    } catch (err) {
+      alert("Login failed");
     }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <form onSubmit={handleSubmit}>
+
       <h2>Login</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="username"
-          placeholder="Username"
-          onChange={handleChange}
-          required
-        />
-        <br /><br />
+      <input
+        name="email"
+        placeholder="Email"
+        onChange={handleChange}
+      />
 
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-        />
-        <br /><br />
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+      />
 
-        <button type="submit">Login</button>
-      </form>
+      <button type="submit">Login</button>
 
-      <p style={{ color: "red" }}>{message}</p>
-    </div>
+    </form>
   );
 }
 

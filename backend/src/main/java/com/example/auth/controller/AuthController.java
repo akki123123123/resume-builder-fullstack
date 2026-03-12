@@ -1,8 +1,8 @@
-
 package com.example.auth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import com.example.auth.model.User;
 import com.example.auth.service.UserService;
 
@@ -21,12 +21,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestBody User user) {
-        return userService.login(user.getUsername(), user.getPassword());
-    }
-
-    @PostMapping("/logout")
-    public String logout(@RequestBody User user) {
-        return null;
-        //return userService.login(user.getUsername(), user.getPassword());
+        return userService.login(user.getEmail(), user.getMobile(), user.getPassword());
     }
 }
