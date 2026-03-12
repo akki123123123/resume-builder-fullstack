@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
+
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: ""
   });
 
@@ -18,6 +19,7 @@ function Register() {
     e.preventDefault();
 
     try {
+
       const res = await axios.post(
         "http://localhost:8080/api/auth/register",
         user
@@ -25,21 +27,32 @@ function Register() {
 
       alert(res.data);
 
-      // 👇 MOVE TO LOGIN PAGE AFTER SUCCESS
-      if (res.data === "Registration successful!") {
-        navigate("/login");
-      }
+      // ✅ Navigate to login page
+      navigate("/login");
 
     } catch (err) {
-      alert("Error registering user");
+      alert("Registration failed");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="username" onChange={handleChange} placeholder="Username" />
-      <input name="password" type="password" onChange={handleChange} placeholder="Password" />
+
+      <input
+        name="email"
+        placeholder="Email"
+        onChange={handleChange}
+      />
+
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+      />
+
       <button type="submit">Register</button>
+
     </form>
   );
 }

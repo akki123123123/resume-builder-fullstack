@@ -1,0 +1,90 @@
+.home-container{
+height:100vh;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+color:white;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Top bar */
+
+.top-bar{
+display:flex;
+align-items:center;
+padding:20px;
+}
+
+/* Hamburger */
+
+.menu-icon{
+cursor:pointer;
+margin-right:20px;
+}
+
+.menu-icon div{
+width:30px;
+height:4px;
+background:white;
+margin:6px 0;
+border-radius:5px;
+}
+
+/* Logo */
+
+.logo{
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+/* Side menu */
+
+.side-menu{
+position:absolute;
+top:70px;
+left:20px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0px 5px 20px rgba(0,0,0,0.3);
+display:flex;
+flex-direction:column;
+}
+
+.menu-link{
+text-decoration:none;
+color:#2a5298;
+font-size:18px;
+margin:10px 0;
+font-weight:bold;
+}
+
+.menu-link:hover{
+color:#1e3c72;
+}
+
+/* Hero section */
+
+.hero-section{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:70%;
+text-align:center;
+}
+
+.hero-title{
+font-size:60px;
+font-weight:900;
+letter-spacing:3px;
+}
+
+.hero-title span{
+color:#ffd700;
+}
+
+.hero-subtitle{
+font-size:22px;
+margin-top:20px;
+opacity:0.9;
+}

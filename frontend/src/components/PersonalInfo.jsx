@@ -2,7 +2,8 @@
 import React, { useContext, useState } from "react";
 import { ResumeContext } from "../ResumeContext";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
  
 
@@ -31,17 +32,20 @@ function PersonalInfo() {
   };
 
   return (
+    <>
+      <Navbar />
     <form onSubmit={handleSubmit} style={{ padding: "20px" }}>
       <h2>Personal Information</h2>
       <input name="name" placeholder="Full Name" onChange={handleChange} required /><br/><br/>
       <input name="email" placeholder="Email" onChange={handleChange} required /><br/><br/>
       <input name="phone" placeholder="Phone" onChange={handleChange} /><br/><br/>
       <textarea name="bio" placeholder="Short Bio" onChange={handleChange}></textarea><br/><br/>
-      <button type="submit">Next</button>
-      <Link to="/register">Register</Link>
-<Link to="/login">Login</Link>
+      <button type="submit"  >Next</button> <br></br>
+      <br></br>
+      {/* <Link to="/register" className="reg">Register</Link>\
+<Link to="/login" className="log">Login</Link> */}
     </form>
-     
+     </>
   );
 }
 

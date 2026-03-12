@@ -1,29 +1,32 @@
 import React, { useContext, useState } from "react";
 import { ResumeContext } from "../ResumeContext";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
-function Achievements() {
+function Skills() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const navigate = useNavigate();
   const [data, setData] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   setResumeData({
+  setResumeData({
   ...resumeData,
-  achievements: data
+  skills: data
 });
-    navigate("/internships");
+    navigate("/achievements");
   };
 
   return (
+    <>
+    <Navbar/>
     <form onSubmit={handleSubmit} style={{ padding: "20px" }}>
-      <h2>Achievements</h2>
+      <h2>Skills</h2>
 
       <textarea
         value={data}
         onChange={(e) => setData(e.target.value)}
-        placeholder="Enter Achievements details"
+        placeholder="Enter Skills details"
         rows="8"
         style={{ width: "100%" }}
       />
@@ -31,7 +34,8 @@ function Achievements() {
       <br /><br />
       <button type="submit">Next</button>
     </form>
+    </>
   );
 }
 
-export default Achievements;
+export default Skills;

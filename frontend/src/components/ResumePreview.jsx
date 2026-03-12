@@ -5,6 +5,7 @@ import Template1 from "./Template1";
 import Template2 from "./Template2";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import Navbar from "./Navbar";
 
 function ResumePreview() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -20,6 +21,8 @@ function ResumePreview() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div style={{padding:"20px"}}>
       <select
         onChange={(e)=>setResumeData({...resumeData, template:e.target.value})}
@@ -38,6 +41,7 @@ function ResumePreview() {
       <br/>
       <button onClick={downloadPDF}>Download Resume</button>
     </div>
+    </>
   );
 }
 

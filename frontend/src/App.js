@@ -3,25 +3,30 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ResumeProvider } from "./ResumeContext";
 
-import PersonalInfo from "./components/PersonalInfo";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
-import Achievements from "./components/Achievements";
  
-import ResumePreview from "./components/ResumePreview";
+import Education from "./components/Education.jsx";
+import Experience from "./components/Experience.jsx";
+import Projects from "./components/Projects.jsx";
+import Skills from "./components/Skills.jsx";
+import Achievements from "./components/Achievements.jsx";
+ 
+import ResumePreview from "./components/ResumePreview.jsx";
  import "./App.css";
-import Internships from "./components/Internship";
+import Internships from "./components/Internship.jsx";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
+import Home from "./components/Home.jsx";
+import Logout from "./components/Logout.jsx";
+import PersonalInfo from "./components/PersonalInfo.jsx";
+
 
 function App() {
   return (
     <ResumeProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<PersonalInfo />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/personal" element={<PersonalInfo />} />
           <Route path="/education" element={<Education />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
@@ -29,6 +34,7 @@ function App() {
           <Route path="/achievements" element={<Achievements />} />
         <Route path="/internships" element= {<Internships/>}/>
           <Route path="/preview" element={<ResumePreview />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

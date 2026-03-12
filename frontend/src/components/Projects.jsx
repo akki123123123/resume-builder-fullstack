@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ResumeContext } from "../ResumeContext";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Projects() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -17,6 +18,8 @@ function Projects() {
   };
 
   return (
+    <>
+    <Navbar/>
     <form onSubmit={handleSubmit} style={{ padding: "20px" }}>
       <h2>Projects</h2>
 
@@ -31,6 +34,7 @@ function Projects() {
       <br /><br />
       <button type="submit">Next</button>
     </form>
+    </>
   );
 }
 
