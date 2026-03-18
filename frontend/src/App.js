@@ -18,6 +18,9 @@ import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
 import Logout from "./components/Logout.jsx";
 import PersonalInfo from "./components/PersonalInfo.jsx";
+import ForgotPassword from "./components/ForgotPassword";
+import UpdatePassword from "./components/UpdatePassword";
+import VerifyOtp from "./components/VerifyOtp.jsx";
 
 
 function App() {
@@ -32,11 +35,14 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/achievements" element={<Achievements />} />
-        <Route path="/internships" element= {<Internships/>}/>
+          <Route path="/internships" element= {<Internships/>}/>
           <Route path="/preview" element={<ResumePreview />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+          <Route path="/verify-otp" element={<VerifyOtp/>}/>
         </Routes>
       </Router>
     </ResumeProvider>
