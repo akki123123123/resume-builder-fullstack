@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.auth.model.User;
 import com.example.auth.service.UserService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "*")
@@ -22,5 +24,30 @@ public class AuthController {
     @PostMapping("/login")
     public String login(@RequestBody User user) {
         return userService.login(user.getEmail(), user.getMobile(), user.getPassword());
+    }
+
+    @PostMapping("/send-otp")
+    public String sendOtp(@RequestBody Map<String,String> data){
+
+        return userService.sendOtp(data.get("login"));
+
+    }
+    @PostMapping("/verify-otp")
+    public String verifyOtp(@RequestBody Map<String,String> data){
+
+        return userService.verifyOtp(
+                data.get("login"),
+                data.get("otp")
+        );
+
+    }
+    @PostMapping("/update-password")
+    public String updatePassword(@RequestBody Map<String,String> data){
+
+        return userService.updatePassword(
+                data.get("login"),
+                data.get("password")
+        );
+
     }
 }

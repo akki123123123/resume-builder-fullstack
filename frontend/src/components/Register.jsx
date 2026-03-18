@@ -7,7 +7,7 @@ function Register() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    email: "",
+    username: "",
     password: ""
   });
 
@@ -16,40 +16,69 @@ function Register() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
+  const value = user.username.trim();
 
-      const res = await axios.post(
-        "http://localhost:8080/api/auth/register",
-        user
-      );
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const mobileRegex = /^[0-9]{10}$/;
 
-      alert(res.data);
-
-      // ✅ Navigate to login page
-      navigate("/login");
-
-    } catch (err) {
-      alert("Registration failed");
-    }
+  let requestBody = {
+    password: user.password
   };
+
+  if (emailRegex.test(value)) {
+    requestBody.email = value;
+  } 
+  else if (mobileRegex.test(value)) {
+    requestBody.mobile = value;
+  } 
+  else {
+    alert("Please enter valid email or mobile number");
+    return;
+  }
+
+  try {
+
+    const res = await axios.post(
+      "http://localhost:8080/api/auth/register",
+      requestBody
+    );
+
+    alert(res.data);
+
+    if (res.data === "Registration successful!") {
+      navigate("/login");
+    }
+
+  } catch (error) {
+    alert("Registration failed");
+  }
+};
 
   return (
     <form onSubmit={handleSubmit}>
 
+      <h2>Register</h2>
+
       <input
-        name="email"
-        placeholder="Email"
+        name="username"
+        placeholder="Email or Mobile Number"
         onChange={handleChange}
+        required
       />
+
+      <br /><br />
 
       <input
         name="password"
         type="password"
         placeholder="Password"
         onChange={handleChange}
+        required
       />
+
+      <br /><br />
 
       <button type="submit">Register</button>
 
